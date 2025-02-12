@@ -4,10 +4,12 @@ import { toast } from "sonner";
 import { signUpFetching } from "../../services/AuthFetching";
 import { Alert } from "../../components/Alert";
 import Spinner from "../../components/Spinner/Spinner";
-import EyeIcon from "../../icons/EyeIcon";
-import EyeLeashIcon from "../../icons/EyeLeashIcon";
+import EyeIcon from "../../icons/template/EyeIcon";
+import EyeLeashIcon from "../../icons/template/EyeLeashIcon";
+import useAuth from "../../hooks/useAuth";
 
 const SignUp = () => {
+  const { updateAuth } = useAuth()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -76,6 +78,7 @@ const navigate = useNavigate();
 
    }
 
+   const styleInput = "bg-white dark:bg-stone-800 mt-1 p-2 w-full border border-gray-300 rounded-md"
 
   return (
     <div className="md:w-[500px] mx-auto">
@@ -84,8 +87,8 @@ const navigate = useNavigate();
         <Link className="hover:text-primary" to="/">
           Atras
         </Link>
-        <div className="md:w-[500px] mx-auto">
-        <form onSubmit={handleSubmit} className="space-y-4  mt-4">
+        <form onSubmit={handleSubmit}  className="bg-gray-50 dark:bg-stone-800 p-5 rounded-lg clas
+      flex flex-col gap-4">
             
           <div>
               <label htmlFor="username" >
@@ -97,7 +100,7 @@ const navigate = useNavigate();
                 name="username"
                 value={formData.username}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               />
             </div>
 
@@ -111,7 +114,7 @@ const navigate = useNavigate();
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               />
             </div>
 
@@ -124,7 +127,7 @@ const navigate = useNavigate();
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               />
               <button
                 type="button"
@@ -145,7 +148,7 @@ const navigate = useNavigate();
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               />
               <button
                 type="button"
@@ -167,7 +170,7 @@ const navigate = useNavigate();
                 name="birthDate"
                 value={formData.birthDate}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               />
             </div>
 
@@ -180,7 +183,7 @@ const navigate = useNavigate();
                 name="sexo"
                 value={formData.sexo}
                 onChange={handleChange}
-                className="mt-1 p-2 w-full border border-gray-300 rounded-md"
+                className={styleInput}
               >
                <option value="" disabled hidden>
                 Select Gender
@@ -205,12 +208,14 @@ const navigate = useNavigate();
               </button>
               {alert.msg && <Alert alert={alert} />}
             </div>
+            <div className="items-center justify-center flex flex-col mt-4">
+            <p>Ya tienes una cuenta? 
+            <Link 
+            className="text-primary hover:text-indigo-900"
+            to="/login"> inicia sesion</Link></p>
+            </div>
       </form>
-      <p>Ya tienes una cuenta? 
-      <Link 
-      className="text-primary hover:text-indigo-900"
-      to="/login"> inicia sesion</Link></p>
-        </div>
+
     </div>
   )
 }

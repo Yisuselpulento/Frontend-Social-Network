@@ -13,6 +13,7 @@ import GuestRoute from './components/GuestRoute';
 import EmailVerification from './pages/AuthPages/EmailVerification';
 import ForgotPassword from './pages/AuthPages/ForgotPassword';
 import UptadePassword from './pages/AuthPages/UptadePassword';
+import EditUser from './pages/EditUser';
 
 function App() {
   return (
@@ -33,7 +34,8 @@ function App() {
                     <Route path="/verification-email" element={<EmailVerification />} />
 
                   <Route element={<ProtectedRoute />}>
-                          <Route path='/profile' element={<Profile/>} />
+                          <Route path='/profile' element={<Profile/>} />   
+                          <Route path='/profile/edit-user' element={<EditUser/>} />   
                   </Route>
 
                   <Route path="*" element={<NotFound />} />
