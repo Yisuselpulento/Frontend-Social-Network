@@ -5,8 +5,9 @@ import ButtonTheme from './ButtonTheme';
 import ProfileButton from './ProfileButton';
 import LogoutButton from './LogoutButton';
 import useAuth from '../../hooks/useAuth';
-import CloseIcon from '../../icons/template/CloseIcon';
-import BurgerIcon from '../../icons/template/BurgerIcon';
+import MovilNavBar from './MovilNavBar';
+import SearchBar from '../SearchBar';
+
 
 const NavBar = ({setIsCardVisible}) => {
   const {auth } = useAuth()
@@ -21,22 +22,14 @@ const NavBar = ({setIsCardVisible}) => {
   const isLoggedIn = auth?.success;
 
   return (
-    <div className="fixed top-0 mx-auto z-30 w-full dark:bg-opacity-45 bg-opacity-45 backdrop-blur-sm rounded flex flex-col border-b dark:border-b-0 items-end  md:justify-between md:flex-row md:items-center">
-      <button
-      aria-label="abrir nav"
-        className="menu-button md:hidden flex items-end dark:bg-primary bg-gray-300 dark:bg-opacity-80 bg-opacity-80 shadow rounded-full p-2 m-3 dark:hover:bg-indigo-700 hover:bg-gray-400 cursor-pointer"
-        onClick={toggleMenu}
-      >
-        {isMenuOpen ? <CloseIcon /> : <BurgerIcon />}
-      </button>
-
+    <div className="fixed md:top-0 md:bottom-auto bottom-0 mx-auto z-30 w-full dark:bg-opacity-45 bg-opacity-45 backdrop-blur-sm rounded flex  border-b dark:border-b-0  justify-between flex-row items-center">
       <nav 
-        className={`md:flex ${isMenuOpen ? 'block' : 'hidden'} md:justify-end md:flex-row flex-col md:items-center px-3 py-3 h-full md:h-[60px] gap-6 md:gap-0 items-end dark:bg-neutral-800 bg-gray-100 w-full rounded dark:bg-opacity-45 bg-opacity-45 md:dark:bg-opacity-0 md:bg-opacity-0 backdrop-blur-sm`}
+        className="hidden md:flex  justify-end flex-row items-center px-3 py-3 h-[60px] dark:bg-neutral-800 bg-gray-200 w-full rounded dark:bg-opacity-45 bg-opacity-45 dark:bg-opacity-0 bg-opacity-0 backdrop-blur-sm "
       >
        
-        <div className="flex md:justify-between md:items-center gap-3 md:flex-row flex-col items-end pb-4 md:pb-0 ">
+        <div className="flex justify-between items-center gap-3 flex-row  ">
         {!isLoggedIn && (
-            <div className='flex gap-5 md:items-center items-end flex-col md:flex-row '>
+           <div className='flex gap-5 items-center flex-row '>
               <Link 
               onClick={toggleMenu}
               className="hover:text-primary" to="/login">Login</Link>
@@ -46,7 +39,8 @@ const NavBar = ({setIsCardVisible}) => {
             </div>
           )}
         {isLoggedIn && (
-            <div className='flex gap-5 md:items-center items-end flex-col md:flex-row '>
+            <div className='flex gap-5 items-center flex-row '>
+              <SearchBar />
               <ProfileButton toggleMenu={toggleMenu}  />
               <LogoutButton toggleMenu={toggleMenu}  />
             </div>
@@ -54,6 +48,7 @@ const NavBar = ({setIsCardVisible}) => {
           <ButtonTheme />
         </div>
       </nav>
+      <MovilNavBar />
       <TokenVerificationCard setIsCardVisible={setIsCardVisible} />
     </div>
   );

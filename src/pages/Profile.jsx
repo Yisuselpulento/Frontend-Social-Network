@@ -1,49 +1,29 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import Spinner from "../components/Spinner/Spinner";
+import Lightbox from "../components/Lightbox";
 
 const Profile = () => {
   const { auth } = useAuth();
-  const [isLoading, setIsLoading] = useState(true);
-  const [imageError, setImageError] = useState(false);
 
   return (
     <div>
       <p>Profile</p>
       <div className="flex flex-col gap-2">
-        <Link className="hover:text-primary" to="/">
-          Ir a Inicio
-        </Link>
-        <Link className="hover:text-primary" to="edit-user">
-          Editar Usuario
-        </Link>
+        <Link className="hover:text-primary" to="/">Ir a Inicio</Link>
+        <Link className="hover:text-primary" to="edit-user">Editar Usuario</Link>
       </div>
-      
-      <div className="relative w-[200px] h-[300px]">
-        {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <Spinner size="2em" />
-          </div>
-        )}
 
-        <img
-          src={imageError ? "/default-avatar.png" : auth?.user?.avatar}
-          className={`w-[200px] h-[300px] object-cover rounded ${
-            isLoading ? "hidden" : "block"
-          }`}
+      <div className="w-[200px] h-[300px] overflow-hidden rounded border-[1px] dark:border-stone-700 border-gray-800">
+        <Lightbox
+          photo={auth?.user.avatar}
           alt="Avatar"
-          onLoad={() => setIsLoading(false)}
-          onError={() => {
-            setIsLoading(false);
-            setImageError(true);
-          }}
+          style="w-[200px] h-[300px] object-cover hover:scale-105 transition-transform duration-300"
         />
       </div>
 
-      <p>{auth?.user?.username}</p>
-      <p>Sexo: {auth?.user?.sexo}</p>
-      <p>Pais: {auth?.user?.nationality}</p>
+      <p>{auth?.user.username}</p>
+      <p>Sexo: {auth?.user.sexo}</p>
+      <p>País: {auth?.user.nationality}</p>
     </div>
   );
 };

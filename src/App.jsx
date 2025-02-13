@@ -14,6 +14,7 @@ import EmailVerification from './pages/AuthPages/EmailVerification';
 import ForgotPassword from './pages/AuthPages/ForgotPassword';
 import UptadePassword from './pages/AuthPages/UptadePassword';
 import EditUser from './pages/EditUser';
+import UserProfile from './pages/UsersProfile';
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
                   <Route element={<ProtectedRoute />}>
                           <Route path='/profile' element={<Profile/>} />   
                           <Route path='/profile/edit-user' element={<EditUser/>} />   
+                          <Route path='/user/:username' element={<UserProfile />} /> 
                   </Route>
 
                   <Route path="*" element={<NotFound />} />
