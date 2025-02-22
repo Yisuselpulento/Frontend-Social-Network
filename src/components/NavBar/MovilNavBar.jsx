@@ -8,6 +8,7 @@ import HomeIcon from "../../icons/HomeIcon";
 import UserIcon from "../../icons/UserIcon";
 import AddIcon from "../../icons/AddIcon";
 import SearchBar from "../SearchBar";
+import ChatIcon from "../../icons/ChatIcon";
 
 const MovilNavBar = () => {
     const { auth } = useAuth();
@@ -37,6 +38,10 @@ const MovilNavBar = () => {
                         
                         <button onClick={() => setIsPostModalOpen(true)}>
                             <AddIcon />
+                        </button>
+
+                        <button onClick={() => setIsSearchOpen(true)}>
+                            <ChatIcon />
                         </button>
                         
                         <div className="relative">
