@@ -46,7 +46,7 @@ export const getUserByUsernameFetching = async (username) => {
 
 export const AddFriendsFetching = async (userId) => {
   try {
-    const { data } = await axiosInstance.post(`/api/user/toggle-follow`, userId);
+    const { data } = await axiosInstance.post(`/api/user/toggle-follow`, {userIdToFollow: userId});
     return data;
   } catch (error) {
     console.error("Error al obtener usuario:", error.response?.data?.message);
