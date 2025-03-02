@@ -11,13 +11,9 @@ import SearchBar from '../SearchBar';
 
 const NavBar = ({setIsCardVisible}) => {
   const {auth } = useAuth()
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
  /*  const {pathname} = useLocation() */
 
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
 
   const isLoggedIn = auth?.success;
 
@@ -31,18 +27,16 @@ const NavBar = ({setIsCardVisible}) => {
         {!isLoggedIn && (
            <div className='flex gap-5 items-center flex-row '>
               <Link 
-              onClick={toggleMenu}
               className="hover:text-primary" to="/login">Login</Link>
               <Link 
-               onClick={toggleMenu}
               className="hover:text-primary" to="/signup">Sign Up</Link>
             </div>
           )}
         {isLoggedIn && (
             <div className='flex gap-5 items-center flex-row '>
               <SearchBar />
-              <ProfileButton toggleMenu={toggleMenu}  />
-              <LogoutButton toggleMenu={toggleMenu}  />
+              <ProfileButton  />
+              <LogoutButton   />
             </div>
           )}
           <ButtonTheme />

@@ -6,7 +6,7 @@ import LogoutIcon from "../../icons/template/LogoutIcon";
 import { logoutFetching } from "../../services/AuthFetching";
 
 
-const LogoutButton = ({toggleMenu}) => {
+const LogoutButton = () => {
    const {setAuth } = useAuth()
    const [ loading, setLoading] = useState(false)
 
@@ -31,10 +31,7 @@ const LogoutButton = ({toggleMenu}) => {
   return (
     <button
   aria-label="cerrar sesión"
-  onClick={() => {
-    toggleMenu();
-    handleLogout();
-  }}
+  onClick={handleLogout}
   disabled={loading}
   className={`flex items-center gap-2  rounded-md md:w-[100px] justify-center
     ${loading ? "bg-primary opacity-80" : " hover:bg-indigo-700 cursor-pointer hover:text-white"}`}

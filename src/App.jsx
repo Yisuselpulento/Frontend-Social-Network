@@ -15,6 +15,9 @@ import ForgotPassword from './pages/AuthPages/ForgotPassword';
 import UptadePassword from './pages/AuthPages/UptadePassword';
 import EditUser from './pages/EditUser';
 import UserProfile from './pages/UsersProfile';
+import SearchPage from './pages/SearchPage';
+import ChatPage from './pages/ChatPage';
+import NotificationsPage from './pages/NotificationsPage';
 
 function App() {
   return (
@@ -38,6 +41,9 @@ function App() {
                           <Route path='/profile' element={<Profile/>} />   
                           <Route path='/profile/edit-user' element={<EditUser/>} />   
                           <Route path='/user/:username' element={<UserProfile />} /> 
+                          <Route path='/search' element={<SearchPage />} /> 
+                          <Route path='/inbox' element={<ChatPage />} /> 
+                          <Route path='/notifications' element={<NotificationsPage />} /> 
                   </Route>
 
                   <Route path="*" element={<NotFound />} />

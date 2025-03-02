@@ -18,6 +18,8 @@ const MovilNavBar = () => {
     const [isPostModalOpen, setIsPostModalOpen] = useState(false);
     const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
 
+    const styleButton = "dark:hover:bg-stone-800 hover:bg-white p-1 rounded-full cursor-pointer";
+
     return (
         <nav className="md:hidden p-2 h-full dark:bg-neutral-950 bg-gray-200 w-full rounded-t-md relative">
             <div className="flex justify-center items-center">
@@ -28,32 +30,48 @@ const MovilNavBar = () => {
                     </div>
                 ) : (
                     <div className='flex justify-between h-full w-full items-center flex-row px-5 relative'>
-                        <Link to="/">
+                        <Link 
+                        className={styleButton}
+                        to="/">
                             <HomeIcon />
                         </Link>
                         
-                        <button onClick={() => setIsSearchOpen(true)}>
+                        <Link 
+                        to="/search"
+                        className={styleButton}
+                        >
+                            
                             <SearchIcon />
-                        </button>
+                        </Link>
                         
-                        <button onClick={() => setIsPostModalOpen(true)}>
+                        <button 
+                        className={styleButton}
+                        onClick={() => setIsPostModalOpen(true)}>
                             <AddIcon />
                         </button>
 
-                        <button onClick={() => setIsSearchOpen(true)}>
+                        <Link
+                        to="/inbox"
+                        className={styleButton}
+                        >
                             <ChatIcon />
-                        </button>
+                        </Link>
                         
                         <div className="relative">
-                            <button onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>
+                            <button 
+                            className={styleButton}
+                            onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}>
                                 <UserIcon />
                             </button>
                             {isUserMenuOpen && (
                                 <div className=" bg-white dark:bg-neutral-800 p-3 shadow-lg rounded-md flex flex-col gap-2 z-50 w-40 items-start">
                                     <Link to="/profile" className="flex items-center gap-2">
-                                        <UserIcon /> Perfil
+                                        <img 
+                                        className="w-8 h-8 rounded-full"
+                                        src={auth?.user.avatar} />
+                                        Perfil
                                     </Link>
-                                    <LogoutButton />
+                                    <LogoutButton  />
                                     <ButtonTheme />
                                 </div>
                             )}
