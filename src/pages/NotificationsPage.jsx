@@ -27,7 +27,7 @@ const NotificationsPage = () => {
       
   return (
     <div  >
-      <div className="flex justify-center items-center bg-gray-200 dark:bg-stone-950 -m-3 p-3">
+      <div className="flex justify-center items-center bg-gray-200 dark:bg-stone-950 p-2">
         <h2 className="font-sans text-xl">Notificaciones</h2>
 
       </div>
@@ -36,7 +36,7 @@ const NotificationsPage = () => {
           <Spinner />
           </div>
         ) : (
-          <div className="flex flex-col gap-4 mt-5">
+          <div className="flex flex-col gap-4 mt-5 p-1">
             {globalNotifications?.map((notification) => (
               <CardNotification key={notification._id} notification={notification} />
             ))}

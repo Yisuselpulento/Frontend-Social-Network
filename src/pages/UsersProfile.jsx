@@ -33,7 +33,7 @@ const UserProfile = () => {
   if (error) return <p className="text-red-500">{error}</p>;
 
   return (
-    <div className="relative min-h-screen flex items-center justify-center -m-3">
+    <div className="relative min-h-screen flex items-center justify-center -mx-1">
       <div className="relative w-full h-screen md:w-[300px] md:h-[400px] ">
         <img
           src={user.avatar}

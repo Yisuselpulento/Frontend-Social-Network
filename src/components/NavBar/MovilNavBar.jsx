@@ -9,6 +9,7 @@ import UserIcon from "../../icons/UserIcon";
 import AddIcon from "../../icons/AddIcon";
 import SearchBar from "../SearchBar";
 import ChatIcon from "../../icons/ChatIcon";
+import CreatePost from "../Posts/CreatePost";
 
 const MovilNavBar = () => {
     const { auth } = useAuth();
@@ -91,11 +92,7 @@ const MovilNavBar = () => {
 
             {isPostModalOpen && (
                 <div className="flex items-center justify-center h-screen" >
-                    <div className="bg-white dark:bg-neutral-900 p-4 rounded-md flex flex-col gap-2 w-full">
-                        <textarea placeholder="¿Qué estás pensando?" className="w-full p-2 border rounded"></textarea>
-                        <button className="bg-blue-500 text-white p-2 rounded">Publicar</button>
-                        <button onClick={() => setIsPostModalOpen(false)} className="text-red-500 text-xs">Cancelar</button>
-                    </div>
+                   <CreatePost setIsPostModalOpen={setIsPostModalOpen} />
                 </div>
             )}
         </nav>

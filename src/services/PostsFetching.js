@@ -2,11 +2,11 @@ import axiosInstance from "../helpers/axiosConfig.js";
 
 export const createPostFetching = async (post) => { 
   try {
-  const { data } = await axiosInstance.patch("/api/posts/create", post);
+  const { data } = await axiosInstance.post("/api/posts/create", post);
    return data
 } catch (error) {
-  console.error('Error during edit:', error.response.data.message);
-  const errorMessage = error.response?.data?.message || "Error al editar usuario";
+  console.error('Error during create post:', error.response.data.message);
+  const errorMessage = error.response?.data?.message || "Error al subir post";
   return { success: false, message: errorMessage };
 } 
 };

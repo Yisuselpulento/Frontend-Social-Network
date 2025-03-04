@@ -29,14 +29,14 @@ const Home = () => {
 
   return (
     <div>
-      <div className="flex justify-between items-center bg-gray-200 dark:bg-stone-950 -m-3 p-3">
+      <div className="flex justify-between items-center bg-gray-200 dark:bg-stone-950 p-2">
         <h2 className="font-sans text-xl">MonssterNetwork</h2>
         <Link 
         to="/notifications"
         className="cursor-pointer hover:bg-stone-800 rounded-full p-1"> <HeartUnlike /></Link>
 
       </div>
-     <div className="pt-10 px-2" >
+     <div className="pt-5 px-2" >
         {loading ? (
           <div className="flex items-center justify-center h-screen">
           <Spinner />
